@@ -2,83 +2,46 @@
   "version": "experimental",
   "tags": [
     {
-      "name": "my-element",
-      "path": "./my-element.js",
-      "description": "An example element.",
+      "name": "my-element-child",
+      "path": "./my-element-child.js",
+      "description": "An example element. Child component.",
       "attributes": [
         {
-          "name": "name",
-          "description": "The name to say \"Hello\" to.",
+          "name": "translation",
+          "description": "The translation when input has text",
           "type": "string",
-          "default": "\"World\""
-        },
-        {
-          "name": "count",
-          "description": "The number of times the button has been clicked.",
-          "type": "number",
-          "default": "0"
+          "default": "\"\""
         }
       ],
       "properties": [
         {
-          "name": "name",
-          "attribute": "name",
-          "description": "The name to say \"Hello\" to.",
+          "name": "translation",
+          "attribute": "translation",
+          "description": "The translation when input has text",
           "type": "string",
-          "default": "\"World\""
-        },
-        {
-          "name": "count",
-          "attribute": "count",
-          "description": "The number of times the button has been clicked.",
-          "type": "number",
-          "default": "0"
-        }
-      ],
-      "slots": [
-        {
-          "name": "",
-          "description": "This element has a slot"
-        }
-      ],
-      "cssParts": [
-        {
-          "name": "button",
-          "description": "The button"
+          "default": "\"\""
         }
       ]
     },
     {
       "name": "my-element",
-      "path": "./docs-/my-element.bundled.js",
+      "path": "./my-element.js",
+      "description": "An example element. Father component.",
       "attributes": [
         {
-          "name": "name",
-          "type": "string"
-        },
-        {
-          "name": "count",
-          "type": "number"
+          "name": "translation",
+          "description": "The translation when input has text",
+          "type": "string",
+          "default": "\"\""
         }
       ],
       "properties": [
         {
-          "name": "name",
-          "attribute": "name",
-          "type": "string"
-        },
-        {
-          "name": "count",
-          "attribute": "count",
-          "type": "number"
-        },
-        {
-          "name": "hasUpdated",
-          "type": "number"
-        },
-        {
-          "name": "updateComplete",
-          "type": "Promise<any>"
+          "name": "translation",
+          "attribute": "translation",
+          "description": "The translation when input has text",
+          "type": "string",
+          "default": "\"\""
         }
       ]
     }
