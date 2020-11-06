@@ -100,16 +100,14 @@ export class MyElement extends LitElement {
   // Define the element's template
   render() {
     return html`
-      <div class="neons">
-        <h1>- Traductor mimimi -</h1>
-      </div>
+      <h1>- Traductor mimimi -</h1>
       <div class="vowels">
         <p class="vowelsText">Selecciona una vocal:</p>
         ${this.vowels.map((vowel) => {
-            return html`
-            <input type="radio" id="${vowel}" name="vowels" value="${vowel}" ?checked="${vowel === this.selectedVowel}" @click=${() => this._onClick(vowel)}>
-            <label for="${vowel}">${vowel}</label>
-        `})}
+          return html`
+          <input type="radio" id="${vowel}" name="vowels" value="${vowel}" ?checked="${vowel === this.selectedVowel}" @click=${() => this._onClick(vowel)}>
+          <label for="${vowel}">${vowel}</label>`
+        })}
       </div>
       <input @keyup=${this._onChange} type="text" placeholder="Escribe un texto">
       <my-element-child .translation=${this.translation}></my-element-child>
@@ -118,6 +116,7 @@ export class MyElement extends LitElement {
 
   _onClick(vowel) {
     this.selectedVowel = vowel;
+    if (this.translation && this.translation.length) this.translation = this.translation.replace(/[aeiouáéíóú]/ig, this.selectedVowel);
   }
 
   _onChange(e) {
