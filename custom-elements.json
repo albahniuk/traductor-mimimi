@@ -33,6 +33,18 @@
           "description": "The translation when input has text",
           "type": "string",
           "default": "\"\""
+        },
+        {
+          "name": "selectedVowel",
+          "description": "The selected vowel",
+          "type": "string",
+          "default": "\"i\""
+        },
+        {
+          "name": "vowels",
+          "description": "The list of vowels",
+          "type": "array",
+          "default": "[\"a\",\"e\",\"i\",\"o\",\"u\"]"
         }
       ],
       "properties": [
@@ -42,6 +54,20 @@
           "description": "The translation when input has text",
           "type": "string",
           "default": "\"\""
+        },
+        {
+          "name": "selectedVowel",
+          "attribute": "selectedVowel",
+          "description": "The selected vowel",
+          "type": "string",
+          "default": "\"i\""
+        },
+        {
+          "name": "vowels",
+          "attribute": "vowels",
+          "description": "The list of vowels",
+          "type": "array",
+          "default": "[\"a\",\"e\",\"i\",\"o\",\"u\"]"
         }
       ]
     }
