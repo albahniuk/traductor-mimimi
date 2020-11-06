@@ -85,7 +85,13 @@ export class MyElement extends LitElement {
        * The translation when input has text
        */
       translation: {type: String},
+      /**
+       * The selected vowel
+       */
       selectedVowel: {type: String},
+      /**
+       * The list of vowels
+       */
       vowels: {type: Array}
     };
   }
