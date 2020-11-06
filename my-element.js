@@ -12,7 +12,7 @@
  * http://polymer.github.io/PATENTS.txt
  */
 
-import {LitElement, html, css, property} from 'lit-element';
+import {LitElement, html, css} from 'lit-element';
 import './my-element-child.js';
 
 /**
@@ -30,7 +30,7 @@ export class MyElement extends LitElement {
         border-radius: 10px;
         height: 40vh;
       }
-      input {
+      input[type="text"] {
         width: 60%;
         border-radius: 20px;
         padding: 5px 15px;
@@ -40,6 +40,18 @@ export class MyElement extends LitElement {
       }
       input:focus{
         outline: none;
+      }
+      .vowels {
+        margin-bottom: 20px;
+        display: flex;
+      }
+      .vowelsText {
+        margin-top: 0;
+        text-align: center;
+        margin-right: 10px;
+      }
+      label {
+        margin-right: 10px;
       }
       h1 {
         font-size: 36px;
@@ -72,13 +84,17 @@ export class MyElement extends LitElement {
       /**
        * The translation when input has text
        */
-      translation: {type: String}
+      translation: {type: String},
+      selectedVowel: {type: String},
+      vowels: {type: Array}
     };
   }
 
   constructor() {
     super();
     this.translation = '';
+    this.selectedVowel = 'i';
+    this.vowels = ['a', 'e', 'i', 'o', 'u'];
   }
 
   // Define the element's template
@@ -87,13 +103,25 @@ export class MyElement extends LitElement {
       <div class="neons">
         <h1>- Traductor mimimi -</h1>
       </div>
+      <div class="vowels">
+        <p class="vowelsText">Selecciona una vocal:</p>
+        ${this.vowels.map((vowel) => {
+            return html`
+            <input type="radio" id="${vowel}" name="vowels" value="${vowel}" ?checked="${vowel === this.selectedVowel}" @click=${() => this._onClick(vowel)}>
+            <label for="${vowel}">${vowel}</label>
+        `})}
+      </div>
       <input @keyup=${this._onChange} type="text" placeholder="Escribe un texto">
       <my-element-child .translation=${this.translation}></my-element-child>
     `;
   }
 
+  _onClick(vowel) {
+    this.selectedVowel = vowel;
+  }
+
   _onChange(e) {
-    this.translation = e.target.value.replace(/[aeiouáéíóú]/ig, 'i');
+    this.translation = e.target.value.replace(/[aeiouáéíóú]/ig, this.selectedVowel);
   }
 }
 
