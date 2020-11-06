@@ -54,7 +54,7 @@ export class MyElement extends LitElement {
         margin-right: 10px;
       }
       h1 {
-        font-size: 36px;
+        font-size: 46px;
         color: #fff;
         margin-bottom: 60px;
         font-family: 'Codystar', cursive;
@@ -115,9 +115,15 @@ export class MyElement extends LitElement {
           <label for="${vowel}">${vowel}</label>`
         })}
       </div>
-      <input @keyup=${this._onChange} type="text" placeholder="Escribe un texto">
-      <my-element-child .translation=${this.translation}></my-element-child>
+      <input @keyup=${this._onChange} type="text" placeholder="Escribe un texto" id="inputText">
+      <my-element-child .translation=${this.translation} .handleClick=${(value) => this.deleteMsg(value)}></my-element-child>
     `;
+  }
+
+  deleteMsg(msg) {
+    console.log("Message from child -->", msg);
+    this.translation = '';
+    this.shadowRoot.querySelector('#inputText').value = '';
   }
 
   _onClick(vowel) {

@@ -31,6 +31,24 @@ export class MyElementChild extends LitElement {
           min-height: 50px;
           overflow: auto;
         }
+        .buttonContainer {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+        }
+        button {
+          box-shadow: 0 0 10px rgba(0,0,0,.1);
+          border-radius: 20px;
+          min-height: 30px;
+          padding: 0 10px;
+          border: none;
+          color: #fff;
+          background-color: #008793;
+        }
+        button:active {
+          outline: none;
+        }
+
       `;
     }
   
@@ -41,17 +59,25 @@ export class MyElementChild extends LitElement {
          * The translation when input has text
          */
         translation: {type: String},
+        /**
+         * The function from father component
+         */
+        handleClick: { type: Function }
       };
     }
   
     constructor() {
       super();
-      this.translation = '';
     }
-  
+
     render() {
       return html`
         <p>${this.translation}</p>
+        ${this.translation.length ? html`
+          <div class="buttonContainer">
+            <button @click="${() => this.handleClick('Yo soy tu hijo')}">Eliminar texto</button>
+          </div>` : ``
+        }
       `;
     }
   }
